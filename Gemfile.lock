@@ -103,6 +103,8 @@ GEM
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     redis (3.3.0)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
     spring (1.7.1)
     spring-watcher-listen (2.0.0)
       listen (>= 2.7, < 4.0)
@@ -132,6 +134,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (>= 5.0.0.rc2, < 5.1)
   redis (~> 3.0)
+  redis-namespace
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
