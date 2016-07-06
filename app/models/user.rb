@@ -11,4 +11,8 @@ class User < ApplicationRecord
     Digest::SHA1.hexdigest password
   end
 
+  def count_messages
+    $redis.get "user:#{id}:messages"
+  end
+
 end

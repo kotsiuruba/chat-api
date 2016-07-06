@@ -23,6 +23,10 @@ module Api
         end
       end
 
+      def show
+        render json: User.find(params[:id])
+      end
+
       protected
         def authenticate
           authenticate_or_request_with_http_token do |token, options|
