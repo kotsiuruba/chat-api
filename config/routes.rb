@@ -8,7 +8,7 @@ Rails.application.routes.draw do
         resources :sessions, :only => :create
         resources :chats, :only => [:index, :create, :update, :show] do
           member do
-            put 'read'
+            patch 'read'
           end
 
           match '/messages/new' => 'messages#new', :via => :get

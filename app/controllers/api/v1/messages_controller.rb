@@ -23,7 +23,11 @@ module Api
           )
 
           if message.persisted?
-            StatusMessage.send_to_all(chat.users.pluck(:id), chat.id, message.id)
+            users_to_send = chat.users.pluck(:id)
+            # sender don't need to see own message as new
+            users_to_send.delete current_user
+            # mark message as new for every user from chat
+            StatusMessage.send_to_all(users_to_send, chat.id, message.id)
             render :json => message
           else
             render :json => {
