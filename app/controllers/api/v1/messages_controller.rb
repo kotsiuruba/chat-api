@@ -23,7 +23,7 @@ module Api
           )
 
           if message.persisted?
-            StatusMessage.send_to_all(chat.users.pluck(:id), chat.id, message_id)
+            StatusMessage.send_to_all(chat.users.pluck(:id), chat.id, message.id)
             render :json => message
           else
             render :json => {
