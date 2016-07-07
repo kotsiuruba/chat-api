@@ -23,6 +23,8 @@ module Api
           )
 
           if message.persisted?
+            # inc count messages of user in redis storage
+            CountMessages.inc current_user
             users_to_send = chat.users.pluck(:id)
             # sender don't need to see own message as new
             users_to_send.delete current_user
