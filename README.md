@@ -17,35 +17,45 @@
   Deployed at https://mls-chat-api.herokuapp.com/
 
 ### Usage
-  User registration:
-  curl -X POST -d "user[username]=user&user[password]=test" https://mls-chat-api.herokuapp.com/users
+  * User registration:
 
-  User auth:
-  curl -X POST -d "user[username]=user&user[password]=test" https://mls-chat-api.herokuapp.com/sessions
+        curl -X POST -d "user[username]=user&user[password]=test" https://mls-chat-api.herokuapp.com/users
 
-  Users list:
-  curl -X GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/users
+  * User auth:
 
-  User info:
-  curl -X GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/users/1
+        curl -X POST -d "user[username]=user&user[password]=test" https://mls-chat-api.herokuapp.com/sessions
 
-  Chat creating:
-  curl -X POST -d "chat[name]=first chat&chat[user_ids][]=2" -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats
+  * Users list:
 
-  Chat editing:
-  curl -X PATCH -d "chat[name]=first chat new&chat[user_ids][]=3" -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats/4
+        curl -X GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/users
 
-  Get user's chats list
-  curl -X GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats
+  * User info:
 
-  Send message to chat
-  curl -X POST -d "message[content]=some message text" -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats/4/messages
+        curl -X GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/users/1
 
-  Mark chat as read
-  curl -X PATCH -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats/4/read
+  * Chat creating:
 
-  Get list new messages
-  GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats/4/messages/new
+        curl -X POST -d "chat[name]=first chat&chat[user_ids][]=2" -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats
 
-  ### Author
+  * Chat editing:
+
+        curl -X PATCH -d "chat[name]=first chat new&chat[user_ids][]=3" -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats/4
+
+  * Get user's chats list
+
+        curl -X GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats
+
+  * Send message to chat
+
+        curl -X POST -d "message[content]=some message text" -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats/4/messages
+
+  * Mark chat as read
+
+        curl -X PATCH -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats/4/read
+
+  * Get list new messages:
+
+        GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats/4/messages/new
+
+### Author
   Kotsiuruba Ruslan
