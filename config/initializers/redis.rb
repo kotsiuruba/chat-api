@@ -1,5 +1,8 @@
 if ENV["REDISCLOUD_URL"]
-  $redis_instance = Redis.new(:url => ENV["REDISCLOUD_URL"])
+  $redis_instance = Redis.new(
+    :url => ENV["REDISCLOUD_URL"],
+    :password => ENV["REDISCLOUD_PASSWORD"]
+    )
 else
   $redis_instance = Redis.new
 end
