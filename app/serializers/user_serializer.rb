@@ -3,12 +3,8 @@ class UserSerializer < ActiveModel::Serializer
 
   def attributes(*args)
     data = super
-    data[:token] = UserToken.generate(object.id) if object.new_record?
+    data[:token] = instance_options[:token] if !instance_options[:token].nil?
     data
-  end
-
-  def token
-    UserToken.generate(object.id)
   end
 
 end

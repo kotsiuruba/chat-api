@@ -12,7 +12,9 @@ class User < ApplicationRecord
   end
 
   def count_messages
-    $redis.get "user:#{id}:messages"
+    # Convert to integer if redis not found this record.
+    # For example if record just created
+    $redis.get("user:#{id}:messages").to_i
   end
 
 end
