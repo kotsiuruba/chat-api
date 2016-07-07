@@ -1,7 +1,7 @@
 module Api
   module V1
     class ChatsController < ApplicationController
-      before_action :authenticate#, :except => :create
+      before_action :authenticate
 
       def create
         chat = Chat.create(chat_params)
@@ -56,7 +56,10 @@ module Api
       end
 
       def read
-
+        StatusMessage.read(current_user, params[:id])
+        render :json => {
+           :message => "Chat was marked as read"
+          }, :status => 200
       end
 
       private
