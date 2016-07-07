@@ -1,7 +1,7 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      # before_action :authenticate, :except => :create
+      before_action :authenticate, :except => :create
 
       def index
         render :json => User.all
