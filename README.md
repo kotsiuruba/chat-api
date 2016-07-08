@@ -16,6 +16,9 @@
 ### Location
   Deployed at https://mls-chat-api.herokuapp.com/
 
+### Version
+  Current version is v1. Add "Accept" header with value "application/vnd.chat-api.v{version_number}" to request specific version.
+
 ### Usage
   * User registration:
 
