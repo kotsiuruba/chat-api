@@ -4,8 +4,8 @@ module Api
       before_action :authenticate
 
       def create
-        chat = Chat.create(chat_params)
-        if chat.persisted?
+        chat = Chat.new chat_params
+        if chat.save
           # add creator to chat
           chat.users << User.find(current_user)
           render :json => chat
@@ -28,7 +28,7 @@ module Api
 
         chat = Chat.find(params[:id])
         curent_user_obj = User.find(current_user)
-        if chat.users.include? curent_user_obj
+        if chat.include_user? curent_user_obj
           if chat.update chat_params
             # add to chat user, who manage chat if list of users edited
             chat.users << curent_user_obj if !params[:chat][:user_ids].nil?
@@ -44,19 +44,10 @@ module Api
           }, :status => 403
         end
 
-        # alternative implementation
-        # chat = Chat
-        # .joins(:users)
-        # .where("users.id" => current_user, :id => params[:id])
-        # .first
-        # if !chat.nil?
-        # else
-        # end
-
       end
 
       def read
-        StatusMessage.read(current_user, params[:id])
+        Messages::Status.read(current_user, params[:id])
         render :json => {
            :message => "Chat was marked as read"
           }, :status => 200

@@ -11,25 +11,22 @@ module Api
       end
 
       def create
-        chat = Chat
-        .joins(:users)
-        .where("users.id" => current_user, :id => params[:chat_id])
-        .first
-        if !chat.nil?
-          message = Message.create(
+        chat = Chat.find(params[:chat_id])
+        if chat.include_user? User.find(current_user)
+          message = Message.new(
             :content => params[:message][:content],
             :user_id => current_user,
             :chat_id => params[:chat_id]
           )
 
-          if message.persisted?
+          if message.save
             # inc count messages of user in redis storage
-            CountMessages.inc current_user
+            Messages::Counter.inc current_user
             users_to_send = chat.users.pluck(:id)
             # sender don't need to see own message as new
             users_to_send.delete current_user
             # mark message as new for every user from chat
-            StatusMessage.send_to_all(users_to_send, chat.id, message.id)
+            Messages::Status.send_to_all(users_to_send, chat.id, message.id)
             render :json => message
           else
             render :json => {
@@ -45,7 +42,7 @@ module Api
       end
 
       def new
-        render :json => StatusMessage.get_new(current_user, params[:chat_id])
+        render :json => Message.where(:id => Messages::Status.get_new(current_user, params[:chat_id]))
       end
 
       private

@@ -12,7 +12,7 @@ class User < ApplicationRecord
   end
 
   def count_messages
-    CountMessages.count id
+    Messages::Counter.count id
   end
 
 end
