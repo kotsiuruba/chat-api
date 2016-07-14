@@ -13,52 +13,49 @@
   * rails db:migrate
 
 
-### Location
-  Deployed at https://mls-chat-api.herokuapp.com/
-
 ### Version
   Current version is v1. Add "Accept" header with value "application/vnd.chat-api.v{version_number}" to request specific version.
 
 ### Usage
   * User registration:
 
-        curl -X POST -d "user[username]=user&user[password]=test" https://mls-chat-api.herokuapp.com/users
+        curl -X POST -d "user[username]=user&user[password]=test" https://rk-chat-api.herokuapp.com/users
 
   * User auth:
 
-        curl -X POST -d "user[username]=user&user[password]=test" https://mls-chat-api.herokuapp.com/sessions
+        curl -X POST -d "user[username]=user&user[password]=test" https://rk-chat-api.herokuapp.com/sessions
 
   * Users list:
 
-        curl -X GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/users
+        curl -X GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://rk-chat-api.herokuapp.com/users
 
   * User info:
 
-        curl -X GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/users/1
+        curl -X GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://rk-chat-api.herokuapp.com/users/1
 
   * Chat creating:
 
-        curl -X POST -d "chat[name]=first chat&chat[user_ids][]=2" -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats
+        curl -X POST -d "chat[name]=first chat&chat[user_ids][]=2" -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://rk-chat-api.herokuapp.com/chats
 
   * Chat editing:
 
-        curl -X PATCH -d "chat[name]=first chat new&chat[user_ids][]=3" -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats/4
+        curl -X PATCH -d "chat[name]=first chat new&chat[user_ids][]=3" -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://rk-chat-api.herokuapp.com/chats/4
 
   * Get user's chats list
 
-        curl -X GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats
+        curl -X GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://rk-chat-api.herokuapp.com/chats
 
   * Send message to chat
 
-        curl -X POST -d "message[content]=some message text" -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats/4/messages
+        curl -X POST -d "message[content]=some message text" -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://rk-chat-api.herokuapp.com/chats/4/messages
 
   * Mark chat as read
 
-        curl -X PATCH -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats/4/read
+        curl -X PATCH -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://rk-chat-api.herokuapp.com/chats/4/read
 
   * Get list new messages:
 
-        GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://mls-chat-api.herokuapp.com/chats/4/messages/new
+        GET -H "Authorization: Token token=7bec359c82b616c7560ee33892cfcdf1" https://rk-chat-api.herokuapp.com/chats/4/messages/new
 
 ### Author
   Kotsiuruba Ruslan
